@@ -1,46 +1,12 @@
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<script>
-const translateText = async (authKey, text, targetLang, sourceLang = null, glossaryId = null) => {
-    try {
-        const apiUrl = 'https://api-free.deepl.com/v2/translate';
-        const headers = {
-            'Authorization': `DeepL-Auth-Key ${authKey}`,
-            'Content-Type': 'application/json'
-        };
-
-        const requestBody = {
-            text: Array.isArray(text) ? text : [text],
-            target_lang: targetLang,
-            source_lang: sourceLang,
-            glossary_id: glossaryId
-        };
-
-        const response = await axios.post(apiUrl, requestBody, { headers });
-
-        return response.data.translations;
-    } catch (error) {
-        console.error('Error translating text:', error.response ? error.response.data : error.message);
-        return null;
-    }
-};
-
-// Example usage:
-const authKey = 'c0a7daee-7756-eba3-f1cf-6e1ba124ef6d';
-const textToTranslate = ['Hello, world!', 'How are you?'];
-const targetLanguage = 'DE';
-const sourceLanguage = 'EN'; // Optional, will auto-detect if not provided
-const glossaryId = 'yourGlossaryId'; // Optional, use if you have a glossary
-
-translateText(authKey, textToTranslate, targetLanguage, sourceLanguage, glossaryId)
-    .then(translations => {
-        if (translations) {
-            translations.forEach(translation => {
-                console.log(`Translated text (${translation.detected_source_language} to ${targetLanguage}): ${translation.text}`);
-            });
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Title</title>
+</head>
+<body>
+  <h1>Welcome to My Website!</h1>
+  <p>This is a simple website template.</p>
+</body>
+</html>
